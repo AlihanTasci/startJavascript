@@ -1,0 +1,22 @@
+.GL {
+  color: blueviolet;
+  background-color: rgb(0, 255, 0, 0.4);
+  width: 500px;
+  border: solid black;
+}
+.GLi {
+  color: blue;
+  background-color: rgb(255, 0, 0, 0.4);
+  width: 500px;
+  border: solid black;
+}
+
+.win {
+  background-color: rgb(0, 255, 0, 0.4);
+  width: 500px;
+}
+
+.loss {
+  background-color: rgb(255, 0, 0, 0.4);
+  width: 500px;
+}
