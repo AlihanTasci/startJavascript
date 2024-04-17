@@ -117,9 +117,7 @@ function gameInfo({ awayTeam, homeTeam }) {
 }
 
 const btn1 = document.querySelector("#Gs button");
-console.log(btn1);
 const btn2 = document.querySelector("#Hr button");
-console.log(btn2);
 
 btn1.addEventListener("click", function () {
   if (btn1.parentElement.childElementCount === 1)
