@@ -84,8 +84,9 @@ const warriorsGames = [
     }
   }
 ];
-const listGame = (games, targetTeam) => {
+const listGame = (games, targetTeam, tag) => {
   const ulParent = document.createElement("p");
+  ulParent.classList.add(tag, "border");
   games.forEach(game => {
     const para = document.createElement("hgroup");
     para.innerHTML = gameInfo(game);
@@ -116,24 +117,22 @@ function gameInfo({ awayTeam, homeTeam }) {
   return `${teamNames} <b>|</b> ${teamPoints}`;
 }
 
-const btn1 = document.querySelector("#Gs button");
-const btn2 = document.querySelector("#Hr button");
-let addItem = [];
-btn1.addEventListener("click", function () {
-  if (btn1.parentElement.childElementCount === 1) {
-    addItem[0] = btn1.parentElement.appendChild(
-      listGame(warriorsGames, "Golden State")
-    );
-  } else {
-    btn1.parentElement.removeChild(addItem[0]);
-  }
-});
-btn2.addEventListener("click", function () {
-  if (btn2.parentElement.childElementCount === 1) {
-    addItem[1] = btn2.parentElement.appendChild(
-      listGame(warriorsGames, "Golden State")
-    );
-  } else {
-    btn2.parentElement.removeChild(addItem[1]);
+const btn = document.querySelector("#teamName");
+
+btn.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    if (this.value === "Golden State" && !document.querySelector(".GS")) {
+      if (document.querySelector(".HR")) document.querySelector(".HR").remove();
+      btn.parentElement.append(listGame(warriorsGames, "Golden State", "GS"));
+    } else if (
+      (this.value === "Houston Rockets") &
+      !document.querySelector(".HR")
+    ) {
+      if (document.querySelector(".GS")) document.querySelector(".GS").remove();
+      btn.parentElement.append(listGame(warriorsGames, "Houston", "HR"));
+    } else {
+      alert("Invalid Entry");
+    }
+    this.value = "";
   }
 });
