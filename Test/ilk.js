@@ -118,12 +118,22 @@ function gameInfo({ awayTeam, homeTeam }) {
 
 const btn1 = document.querySelector("#Gs button");
 const btn2 = document.querySelector("#Hr button");
-
+let addItem = [];
 btn1.addEventListener("click", function () {
-  if (btn1.parentElement.childElementCount === 1)
-    btn1.parentElement.appendChild(listGame(warriorsGames, "Golden State"));
+  if (btn1.parentElement.childElementCount === 1) {
+    addItem[0] = btn1.parentElement.appendChild(
+      listGame(warriorsGames, "Golden State")
+    );
+  } else {
+    btn1.parentElement.removeChild(addItem[0]);
+  }
 });
 btn2.addEventListener("click", function () {
-  if (btn2.parentElement.childElementCount === 1)
-    btn2.parentElement.appendChild(listGame(warriorsGames, "Houston"));
+  if (btn2.parentElement.childElementCount === 1) {
+    addItem[1] = btn2.parentElement.appendChild(
+      listGame(warriorsGames, "Golden State")
+    );
+  } else {
+    btn2.parentElement.removeChild(addItem[1]);
+  }
 });
