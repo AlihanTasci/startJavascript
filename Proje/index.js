@@ -1,21 +1,29 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-
+const list = [];
 async function getHTML(url) {
-  const list = [];
   try {
     const { data } = await axios.get(url);
     const page = cheerio.load(data);
-    let count = 0;
-    page("main .list .list-item .img a").each((index, element) => {
-      if (page(element) === this) {
-        count++;
-        console.log(count);
-      }
-    });
+    setTimeout(() => {
+      page(".list .list-item .img a").each((index, element) => {
+        list.push(url + page(element).attr("href"));
+      });
+    }, 20000);
   } catch (error) {
     console.error("HTML çekme hatasi");
   }
 }
 
-const webPage = getHTML("https://ev-database.org/");
+async function getMainData(url) {
+  const { data } = await axios.get(url);
+  const page = cheerio.load(data);
+  console.log(page);
+}
+
+async function main() {
+  await getHTML("https://ev-database.org");
+  getMainData(list[0]);
+}
+
+main();
