@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import usersRepo from "./repositories/users";
+import "./repositories/users.js";
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));

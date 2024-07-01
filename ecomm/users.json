@@ -1,7 +1,5 @@
 [
   {
-    "email": "test@test.com",
-    "password": "password",
-    "passwordConfirmation": "password"
+    "email": "test@test.com"
   }
 ]
