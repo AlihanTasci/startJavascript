@@ -28,6 +28,7 @@ class UsersRepository {
     records.push(attrs);
 
     await this.writeAll(records);
+    return attrs;
   }
   async writeAll(records) {
     return await fs.promises.writeFile(
